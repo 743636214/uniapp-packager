@@ -1,0 +1,11 @@
+{
+  "name": "DCloud 5.34 · 内置 SDK",
+  "version": "5.34",
+  "hbuilderVersion": "5.34.2026102909",
+  "template": "HBuilder-Integrate-AS",
+  "moduleName": "simpleDemo",
+  "bundled": true,
+  "source": "https://nativesupport.dcloud.net.cn/AppDocs/download/android.html",
+  "originalArchive": "Android-SDK@5.34.82692_20261030.zip",
+  "originalArchiveSha256": "9afdb29e46d52c3b0a09825a453bf1953887358e1861051037a861611dadc97e"
+}

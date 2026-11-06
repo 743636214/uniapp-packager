@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UniPack · 本地打包工作台</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-mark">U<span>↗</span></span><span>UniPack<small>本地打包工作台</small></span></a>
+    <div class="workspace-label">WORKSPACE <span>LOCAL</span></div>
+    <nav id="navigation"><button data-view="project" class="nav active"><span>▦</span>项目工作台</button><button data-view="environment" class="nav"><span>⌘</span>本机环境<span class="nav-dot" id="envDot"></span></button><button data-view="history" class="nav"><span>◷</span>构建记录</button></nav>
+    <div class="sidebar-section"><span>我的项目 <b id="projectCount">0</b></span><button id="newProject" title="新建项目">＋</button></div>
+    <div id="projectList" class="project-list"></div>
+    <button class="import-side" id="importAndroid">↳ 导入已有打包工程</button>
+    <div class="sidebar-bottom"><span class="online-dot"></span><div id="machineLabel">正在连接本机…<small>Key 和证书保留在本机</small></div></div>
+  </aside>
+  <div class="shell"><header class="topbar"><div><span class="crumb">工作空间</span><span class="slash">/</span><strong id="viewTitle">项目工作台</strong></div><div class="top-actions"><span class="local-badge"><i></i>本地运行</span><button class="text-button" id="helpButton">使用说明 ↗</button></div></header><main id="main"><div class="loading">正在连接本机工作台…</div></main><footer class="page-footer">UniPack <span>源码、签名、构建，一处完成。</span><span id="dataHint"></span></footer></div>
+  <dialog id="browserDialog" class="browser-dialog"><div class="modal-header"><div><span class="eyebrow">LOCAL FILES</span><h2 id="browserTitle">选择文件夹</h2></div><button class="icon-button" id="closeBrowser">×</button></div><form id="browserPathForm" class="browser-path"><button type="button" id="parentDirectory" class="secondary">↑ 上一级</button><input id="browserPath" aria-label="当前路径"><button type="submit" class="secondary">前往</button></form><div id="browserEntries" class="browser-entries"></div><div class="modal-footer"><span id="browserSelection">请选择一个位置</span><button id="choosePath" class="primary">选择此文件夹</button></div></dialog>
+  <dialog id="importDialog" class="import-dialog"><div class="modal-header"><div><span class="eyebrow">IMPORT PROJECT</span><h2>导入已有 Android 打包工程</h2></div><button id="closeImport" class="icon-button">×</button></div><p class="muted">读取工程里的应用配置与签名信息，建立独立项目。原工程保留原样。</p><label class="field">Android 工程根目录<div class="path-field"><input id="importAndroidDir" placeholder="选择含 settings.gradle 的目录"><button class="browse secondary" data-target="importAndroidDir" data-kind="directory">浏览</button></div><small>可选现有打包工程，或 DCloud SDK 的 HBuilder-Integrate-AS。</small></label><label class="field">UniApp 源码目录<div class="path-field"><input id="importSourceDir" placeholder="选择含 manifest.json / src/manifest.json 的目录"><button class="browse secondary" data-target="importSourceDir" data-kind="directory">浏览</button></div><small>已有脚本记录源码路径时可自动识别；换电脑后重新选择。</small></label><div class="modal-footer"><button id="importProfileButton" class="text-button">导入项目配置 JSON</button><button id="confirmImport" class="primary">导入工程</button></div></dialog>
+  <dialog id="helpDialog" class="help-dialog"><div class="modal-header"><div><span class="eyebrow">GET STARTED</span><h2>从选择项目，到拿到 APK</h2></div><button id="closeHelp" class="icon-button">×</button></div><ol class="help-steps"><li><strong>添加项目</strong><p>导入现有 Android 工程，或选择 UniApp 源码和匹配的 DCloud Android 模板。模板提供原生模块、图标和网络配置。</p></li><li><strong>配置本机环境</strong><p>自动检测 HBuilderX、JDK、Android SDK。缺少 Java/Android 组件可在同意 SDK 许可后安装；HBuilderX 从官方安装并登录。</p></li><li><strong>填写应用身份</strong><p>保存 AppID、包名、对应 AppKey 和证书。已有应用升级继续使用原证书；新应用可创建专用证书后登记到 DCloud。</p></li><li><strong>一键构建</strong><p>启动 HBuilderX，保存配置，点击构建。工具创建独立副本、导出资源、编译签名并校验 APK，再安装到手机测试。</p></li></ol><div class="notice">当前构建预设：UniApp / Vue3 + DCloud 5.34，AGP 8.12、Gradle 8.14.3。Mac、Windows、Linux 分别选择本机工具路径；跨平台分支中尚未在目标系统验证的部分，需完成一次出包验收。</div><div class="modal-footer"><button id="goEnvironment" class="primary">前往配置环境</button></div></dialog>
+  <input type="file" id="profileFile" accept=".json,application/json" hidden>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body></html>

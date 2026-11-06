@@ -1,0 +1,13 @@
+import { Store } from '../server/store.mjs';
+import { importAndroid } from '../server/projects.mjs';
+import { discover } from '../server/environment.mjs';
+const args = process.argv.slice(2);
+const value = flag => args[args.indexOf(flag) + 1];
+if (!args.includes('--android')) throw new Error('用法：node scripts/import-existing.mjs --android <Android工程> --source <源码>');
+const store = await new Store().init();
+const androidDir = value('--android');
+const existing = store.list().find(p => p.androidDir === androidDir);
+if (existing) console.log('项目已存在：' + existing.name);
+else console.log('已导入项目：' + (await importAndroid(store, { androidDir, sourceDir: args.includes('--source') ? value('--source') : '' })).name);
+await store.environment(await discover(store.state.environment, store.dir));
+console.log('本机工具路径已识别，实际 Key 与密码未输出。');

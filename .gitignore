@@ -1,0 +1,37 @@
+# Local dependencies, IDE files and build output
+node_modules/
+.idea/
+.gradle/
+build/
+dist/
+unpackage/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+
+# Keep the downloaded DCloud 5.34 SDK in this repository.
+# Other SDK imports remain local until explicitly added.
+sdks/*/
+!sdks/5.34-20261030/
+!sdks/5.34-20261030/**
+
+# Local project data, private signing material and generated packages
+.data/
+.local/
+.env
+.env.*
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.apk
+*.aab
+signing.properties
+app.properties
+appkey-binding.json
+master.key
+state.json
+history.json
